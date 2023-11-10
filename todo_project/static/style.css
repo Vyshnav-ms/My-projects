@@ -1,0 +1,19 @@
+.container-fluid{
+    text-align: center;
+}
+
+
+/* Style the banner div */
+.banner {
+    background-color: #66c344; /* Set the background color */
+    padding: 50px; /* Add some padding for spacing */
+    border-radius: 0px; /* Add rounded corners */
+    margin-bottom: 50px;
+  }
+  
+  /* Style the banner text */
+  .banner-text h1 {
+    color: #FFFFFF; /* Set the text color */
+    font-size: 50px; /* Set the font size */
+    font-weight: bold; /* Make the text bold */
+  }
