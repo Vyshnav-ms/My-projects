@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block metadescription %}
+    This is your Shop Bag review for purchase
+{% endblock %}
+
+{% block title %}
+    Bag-NexTrend Fashion|Pvt Ltd
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% if cart_items %}
+    <h2>Your Shopping Bag</h2>
+        {% for cart_item in cart_items %}
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{ cart_item.product.product_image.url }}" alt="{{ cart_item.product.product_name }}" class="cart-image" style="max-width: 200px; max-height: 200px; margin-top: 50px; margin-bottom:50px; margin-left: 50px; margin-right: 50px;">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ cart_item.product.product_name }}</h5>
+                            <p class="card-text">SKU : {{ cart_item.product.id }}</p>
+                            <p class="card-text">Price: ₹{{ cart_item.product.price }}</p>
+                            <div class="quantity-controls">
+                                {% if cart_item.quantity < cart_item.product.stock %}
+                                    <a href="{% url 'cart:add_to_cart' cart_item.product.id %}" class="plus-button">
+                                        <i class="fa-solid fa-circle-plus"></i>
+                                    </a>
+                                {% endif %}
+                                <span class="quantity">{{ cart_item.quantity }}</span>
+                                <a href="{% url 'cart:cart_remove' cart_item.product.id %}" class="minus-button">
+                                    <i class="fa-solid fa-circle-minus"></i>
+                                </a>
+                                
+                            </div><br>
+                            <p class="card-text">Subtotal: ₹{{ cart_item.sub_total }}</p>
+                            <a href="{% url 'cart:full_remove' cart_item.product.id %}" class="trash-icon">
+                                <i class="fa-regular fa-trash-can trash-icon"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        <div class="cart-summary col-md-12">
+            <p>Total Items: {{ counter }}</p>
+            <p>Total Price: ₹{{ total }}</p>
+            <a href="" class="btn btn-success">Place Order</a>
+            <a href="{% url 'ecommerce_app:allProdCat' %}" class="btn btn-primary">Add items</a>
+        </div>
+    {% else %}
+    <div class="text-center">
+        <p><b>Your Shopping Bag is empty.</b></p>
+        <a href="{% url 'ecommerce_app:allProdCat' %}" class="btn btn-success">Continue Shopping</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
