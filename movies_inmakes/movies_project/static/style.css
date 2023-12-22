@@ -1,0 +1,144 @@
+/* Reset and global styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background-color: #000; /* Black background for a cinematic feel */
+  color: #fff; /* White text */
+}
+
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px;
+  background-color: #000;
+}
+
+.movie-item {
+  text-align: center;
+  margin: 20px;
+  max-width: 100px;
+  width: calc(30% - 30px); /* 3 items per row with margins */
+  box-sizing: border-box;
+  float: left;
+}
+
+.movie-label {
+ 
+  font-size: 16px;
+  color: #FFD700;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.movie-image {
+  width: 90%;
+  height: 90%;
+  border: 3px solid #FFD700;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+
+
+/* details styles */
+.movie-details {
+  text-align: center;
+  background-color: #000; /* Black background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* A more pronounced shadow */
+  max-width: 400px;
+  margin: 0 auto;
+  color: #fff; /* White text */
+}
+
+.movie-title {
+  font-size: 24px;
+  color: #FFD700; /* Golden title for emphasis */
+}
+
+.movie-description {
+  font-size: 18px;
+  color: #bbb; /* Light gray description text */
+}
+
+.movie-year {
+  font-size: 16px;
+  color: #999; /* Slightly darker gray year text */
+}
+
+
+/* Delete.html-specific styles */
+.movie-delete {
+  background-color: #000; /* Black background */
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  width: 400px;
+  margin: 100px auto;
+  padding: 30px;
+  text-align: center;
+  position: relative;
+}
+
+.movie-delete h1 {
+  font-size: 32px;
+  color: #FFD700; /* Golden title */
+  margin-bottom: 20px;
+}
+
+.movie-delete label {
+  font-size: 18px;
+  color: #bbb; /* Light gray text */
+  margin-bottom: 30px;
+}
+
+.movie-delete .delete-button {
+  background-color: #FFD700; /* Golden button */
+  color: #000; /* Black text */
+  border: none;
+  border-radius: 5px;
+  padding: 15px 30px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.movie-delete .delete-button:hover {
+  background-color: #999; /* Slightly darker gold on hover */
+}
+
+/* Additional creative styles */
+.movie-delete::before {
+  content: "X"; /* Display a large "X" character before the delete section */
+  font-size: 100px;
+  color: #ff0000; /* Golden X */
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.movie-delete::after {
+  content: "Are you sure?";
+  font-size: 24px;
+  color: #bbb; /* Light gray message */
+  display: block;
+  margin-top: 10px;
+}
+.btn-golden {
+  background-color: #FFD700; /* Golden background */
+  color: #000; /* Black text */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-golden:hover {
+  background-color: #999; /* Slightly darker gold on hover */
+}
