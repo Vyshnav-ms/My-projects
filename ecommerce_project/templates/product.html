@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block metadescription %}
+    {{ product.product_description|truncatewords:155 }}
+{% endblock %}
+
+{% block title %}
+    {{ product.product_name }} - NexTrend Fashion
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'ecommerce_app:allProdCat' %}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ product.category.get_url }}">{{ product.category }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ product.product_name }}</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-6">
+            <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}" class="product-image">
+        </div>
+        <div class="col-lg-6">
+            <h1 class="product-title">{{ product.product_name }}</h1>
+            <p class="product-price">₹{{ product.price }}</p>
+            <p class="product-details">About this item</p>
+            <p class="product-description">{{ product.product_description }}</p>
+            {% if product.stock <= 0 %}
+                <p class="out-of-stock"><b>Out of Stock</b></p>
+            {% else %}
+            <a href="{% url 'cart:add_to_cart' product.id %}" class="btn btn-primary">Add to Bag</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

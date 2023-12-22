@@ -1,0 +1,40 @@
+{% load static %}
+
+<!-- Your navigation bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'ecommerce_app:allProdCat' %}">
+        <img src="{% static 'img/NexTrendlogo.png' %}" alt="logoimage" width="50" height="50">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item dropdown {% if 'ecommerce_app' in request.path %} active {% endif %}">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Categories
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'ecommerce_app:allProdCat' %}">All Products</a>
+                    <div class="dropdown-divider"></div>
+                    {% for category in links %}
+                        <a class="dropdown-item" href="{{ category.get_url }}">{{ category.category_name }}</a>
+                    {% endfor %}
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'cart:cart_detail' %}"><i class="fa-solid fa-bag-shopping"></i>({{item_count}})</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" action="{% url 'search_app:SearchResult' %}" method="GET">
+            {% csrf_token %}
+            <input class="form-control mr-sm-2" type="search" placeholder="Search for products,brand and more" name="q" aria-label="Search" style="width: 300px";>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
+        </form>
+    </div>
+</nav>

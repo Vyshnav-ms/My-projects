@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block metadescription %}
+    Shop with NexTrend Fashion
+{% endblock %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block content %}
+<div class="container content">
+    <div>
+        <p class="search_text">You have searched for: <b>"{{ query }}"</b></p>
+    </div>
+    <div class="row">
+        {% for product in products %}
+            <div class="col-lg-3 col-md-4 col-sm-6 product-item">
+                <a href="{{ product.get_url }}">
+                    <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}">
+                </a>
+                <h4>{{ product.product_name }}</h4>
+                <p>₹{{ product.price }}</p>
+            </div>
+        {% empty %}
+            <div class="col-12">
+                <p class="search_text">0 results found</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
